@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="mssqlGenerator" targetRuntime="MyBatis3">
+        <plugin type="com.xhd.generator.MyBatisPlugin" >
+            <property name="hasLombok" value="true"/>
+        </plugin>
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/xhr?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="root123456" >
+            <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.xhd.xhr.domain"
+                            targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="com.xhd.xhr.mapper"
+                         targetProject="src/main/java" />
+        <javaClientGenerator targetPackage="com.xhd.xhr.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER" />
+
+        <table tableName="t_nation" domainObjectName="Nation"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!-- defaultModelType="flat" 设置复合主键时不单独为主键创建实体 -->
+    <context id="MySql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 生成的POJO实现java.io.Serializable接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!--注释-->
+        <commentGenerator type="com.xhd.generator.MyCommentGenerator">
+        </commentGenerator>
+        <!-- 数据库连接 -->
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/vhr"
+                userId="root"
+                password="root123456">
+            <property name="useInformationSchema" value="true" />
+        </jdbcConnection>
+
+        <!-- 生成POJO对象，并将类放到com.xhd.xhr.entity包下 -->
+        <javaModelGenerator targetPackage="com.xhd.xhr.model" targetProject="src/main/java"></javaModelGenerator>
+        <!-- 生成mapper xml文件，并放到resources下的mapper文件夹下 -->
+        <sqlMapGenerator targetPackage="com.xhd.xhr.mapper"  targetProject="src/main/java"></sqlMapGenerator>
+
+        <!-- 生成mapper xml对应dao接口，放到com.xhd.xhr.mapper包下-->
+        <javaClientGenerator targetPackage="com.xhd.xhr.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
+
+        <!-- table标签可以有多个，至少一个，tableName指定表名，可以使用_和%通配符 -->
+        <table tableName="t_nation" domainObjectName="Nation">
+
+        </table>
+    </context>
+</generatorConfiguration>
